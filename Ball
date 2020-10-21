@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+
+    <style type="text/css">
+      body {
+          background-color: white;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <canvas id="canvas-for-ball"></canvas>
+
+    <script type="text/javascript">
+      // Gets a handle to the element with id canvasOne.
+      var canvas = document.getElementById("canvas-for-ball");
+      // Get a 2D context for the canvas.
+      var ctx = canvas.getContext("2d");
+      
+      // The vertical location of the ball.
+      var yP = 25;
+      var yV = 5;
+      var xP = 50;
+      var xV = 5;
+      // A function to repeat every time the animation loops.
+      function repeatme() {
+        // Draw the ball (stroked, not filled).
+        ctx.beginPath();
+        ctx.arc(xP, yP, 3, 25, 50 * Math.PI);
+        ctx.stroke();
+        
+        // Update the y location
+        if(yP==130 || yP == 10)
+        {
+          yV *= -1;
+        }
+        
+        if(xP==130 || xP == 10)
+        {
+          xV *= -1;
+        }
+       yP += yV;
+       xP += xV;
+        
+		console.log(yP);
+    console.log(xP);
+        window.requestAnimationFrame(repeatme);
+      }
+      
+      // Get the animation going.
+      repeatme();
+    </script>
+
+  </body>
+
+</html>
